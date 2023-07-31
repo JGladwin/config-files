@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# All audio file types are added
+
+mpv ~/hard_disk/Gladwin/Me/Music/*.webm ~/hard_disk/Gladwin/Me/Music/*.m4a ~/hard_disk/Gladwin/Me/Music/*.mp3

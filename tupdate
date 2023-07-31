@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Updating all files before specific updates
+sudo dnf update
+sudo dnf clean all
+
+# updating rust
+rustup update
+sudo dnf clean all
