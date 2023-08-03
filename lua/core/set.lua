@@ -30,4 +30,5 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+-- old keymap for netrw file manager
+--vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)

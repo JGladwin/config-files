@@ -10,9 +10,15 @@ return require('packer').startup(function(use)
   use { "catppuccin/nvim", as = "catppuccin" }
 
   use {
-	  'nvim-telescope/telescope.nvim', tag = '0.1.1',
+	  'nvim-telescope/telescope.nvim', tag = '0.1.2',
 	  -- or                            , branch = '0.1.x',
 	  requires = { {'nvim-lua/plenary.nvim'} }
+  }
+
+  -- Telescope file browser
+  use {
+      "nvim-telescope/telescope-file-browser.nvim",
+      requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
   }
 
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
@@ -47,4 +53,7 @@ return require('packer').startup(function(use)
 
   -- Git gutter
   use('airblade/vim-gitgutter')
+
+  --Icons
+  use('nvim-tree/nvim-web-devicons')
 end)
