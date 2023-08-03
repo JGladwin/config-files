@@ -44,4 +44,7 @@ return require('packer').startup(function(use)
 
   --Live server
   use('ray-x/web-tools.nvim')
+
+  -- Git gutter
+  use('airblade/vim-gitgutter')
 end)
