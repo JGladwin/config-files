@@ -41,4 +41,7 @@ return require('packer').startup(function(use)
     }
   }
   use('ThePrimeagen/vim-be-good')
+
+  --Live server
+  use('ray-x/web-tools.nvim')
 end)
