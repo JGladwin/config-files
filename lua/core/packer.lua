@@ -56,4 +56,13 @@ return require('packer').startup(function(use)
 
   --Icons
   use('nvim-tree/nvim-web-devicons')
+
+  --LeetBuddy
+  use {
+      "Dhanus3133/LeetBuddy.nvim",
+      requires = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
+      config = function()
+        require("leetbuddy").setup({})
+      end
+  }
 end)
