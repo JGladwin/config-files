@@ -65,4 +65,8 @@ return require('packer').startup(function(use)
         require("leetbuddy").setup({})
       end
   }
+
+  -- Emmet support
+  use('mattn/emmet-vim')
+
 end)
