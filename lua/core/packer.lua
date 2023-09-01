@@ -69,4 +69,7 @@ return require('packer').startup(function(use)
   -- Emmet support
   use('mattn/emmet-vim')
 
+  --vim-surround support
+  use('tpope/vim-surround')
+
 end)
