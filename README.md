@@ -3,7 +3,7 @@
 ## To use
 
 - Neovim config is kept at *.config/nvim*. Let's call this location *WORK_DIR*
-- Clone to *WORK_DIR* using `git clone -b sway git@github.com:JGladwin/config-files.git --single-branch`
+- Clone to *WORK_DIR* using `git clone -b neovim git@github.com:JGladwin/config-files.git --single-branch`
 - store *WORK_DIR/lua/core/packer.lua* and all files in *WORK_DIR/after/plugin/* some other temporary location to initialize all init.lua files in the config first
 - Initialize all files remaining by typing `:so` in command mode in neovim in *WORK_DIR/init.lua* file and executing it
 - download plugin manager software and setup it up in plugin-manager-name.lua file. In this case, it is packer.lua
