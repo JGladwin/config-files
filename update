@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+echo -ne "
+██╗   ██╗██████╗ ██████╗  █████╗ ████████╗███████╗
+██║   ██║██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝██╔════╝
+██║   ██║██████╔╝██║  ██║███████║   ██║   █████╗  
+██║   ██║██╔═══╝ ██║  ██║██╔══██║   ██║   ██╔══╝  
+╚██████╔╝██║     ██████╔╝██║  ██║   ██║   ███████╗
+ ╚═════╝ ╚═╝     ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝
+
+"
+
+echo "Updating pacman packages..."
+sudo pacman -Syu
+
+echo "Updating yay packages..."
+yay
+
+echo "Updating flatpak packages..."
+flatpak update
+
+echo "Running rustup..."
+rustup update

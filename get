@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+option1=`printf "Local Internet" | tr " " "\n" | fzf`
+echo $option1
+
+

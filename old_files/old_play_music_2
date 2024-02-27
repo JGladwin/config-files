@@ -1,0 +1,72 @@
+#!/usr/bin/env bash
+
+#expected to be obtained from something like a config file
+MUSIC_DIR=~/music
+
+echo "Welcome to music player. type exit in any of the prompt to exit if required"
+
+read -p "Just a song(0) or playlist(1)?: " is_playlist
+
+case $is_playlist in
+    0)
+        echo "Testing: Song is selected"
+        ;;
+    1)
+        echo "Testing: Playlist is selected"
+        ;;
+    "exit")
+            exit 0
+        ;;
+    *)
+        is_playlist=0
+        echo "Testing: Song is selected"
+        ;;
+esac
+
+file_count=`find $MUSIC_DIR | wc -l`
+file_count=$((file_count-1))
+# Replace this with the selection by primagen
+find $MUSIC_DIR -printf "%f\n" | tail -n +2 | nl
+read -p "Enter the music you want to play(Selects random one by default): " selection
+
+case $selection in
+    [0-9]*) 
+        if [ $selection -lt 0 ] || [ $selection -gt $file_count ]; then
+            selection=$((1+$RANDOM%file_count))
+        fi
+        ;;
+    "exit")
+            exit 0
+        ;;
+    *)
+        selection=$((1+$RANDOM%file_count))
+        ;;
+esac
+
+# Why doesn't this work exactly?
+# FILE_PATH=`find $MUSIC_DIR -printf "%f\n" | tail -n +2 | nl | grep $selection | cut -f 2 | sed s/' '/'\\\ '/g`
+# mpv $MUSIC_DIR/$FILE_PATH
+
+FILE_PATH=`find $MUSIC_DIR -printf "%f\n" | tail -n +2 | nl | grep $selection | cut -f 2`
+
+# not working properly
+# echo "$FILE_PATH" | grep ","
+# if [ $? -eq 0 ]; then
+#     FILE_PATH=`sed s/','/'\,'/g $FILE_PATH`
+# fi
+echo "$FILE_PATH"
+#FILE_PATH=`find $MUSIC_DIR -printf "%f\n" | tail -n +2 | nl | grep $selection | cut -f 2 | sed s/','/'\,'/g`
+
+# Final execution
+if [ $is_playlist -eq 1 ]; then
+    # Hack since idk how to properly use mpv using signals and IPC
+    mpv "$MUSIC_DIR/$FILE_PATH"
+    # For some reason, this doesn't work so playlist feature is unusable
+    mpv "$MUSIC_DIR/\*"
+else
+    mpv "$MUSIC_DIR/$FILE_PATH"
+fi
+
+# For multi-line commenting, incase it is required
+:<< 'END_COMMENT'
+END_COMMENT

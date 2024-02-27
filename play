@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+printf "Welcome to play.\nType exit in any of the prompt to exit if required\n"
+
+read -p "Volume(0-100)(Default:40%): " USER_VOLUME
+
+case $USER_VOLUME in
+    [0-9]*)
+        ;;
+    "exit")
+            exit 0
+        ;;
+    *)
+        USER_VOLUME=40
+        ;;
+esac
+
+FILE_NAME=`ls *[webm|m4a] | fzf`
+:<< 'END_COMMENT'
+mpv "$FILE_NAME" 
+
+read -p "Loop it? N(0)/y/[0-9*] " IS_LOOP
+
+case $IS_LOOP in
+    [Nn])
+        mpv "$FILE_NAME" --volume="$USER_VOLUME" --loop=no
+        ;;
+    [Yy]|"inf")
+        mpv "$FILE_NAME" --volume="$USER_VOLUME" --loop=inf
+        ;;
+    [0-9*])
+        mpv "$FILE_NAME" --volume="$USER_VOLUME" --loop=$IS_LOOP
+        ;;
+    *)
+        "Don't know"
+        ;;
+esac
+
+END_COMMENT

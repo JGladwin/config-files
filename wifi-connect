@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+OPTION=`printf "CONNECT DISCONNECT" | tr " " "\n" | fzf`
+
+case $OPTION in
+    "CONNECT")
+        nmcli device wifi connect `nmcli device wifi list | nl | fzf | cut -d' ' -f16`
+        ;;
+    "DISCONNECT")
+        nmcli con down `nmcli | grep "connected to " | cut -d' ' -f4`
+        ;;
+    *)
+        echo "Unexpected behaviour"
+        ;;
+esac

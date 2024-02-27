@@ -1,0 +1,5 @@
+#!usr/bin/env bash
+
+FILENAME="screenshot-`date +%F-%T`"
+echo "$FILENAME"
+#slurp | grim ~/Downloads/$FILENAME.png

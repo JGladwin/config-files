@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+BIN_OPTION=`printf "EXIT cheat.sh pacman yay flatpak" | tr " " "\n" | fzf`
+echo $BIN_OPTION
+# curl cheat.sh/$1
+
+case $BIN_OPTION in
+    "EXIT")
+        exit 0
+        ;;
+    [a-zA-Z]*)
+        read -p "In $BIN_OPTION, search: " ARGUMENT
+        echo "$ARGUMENT"
+    *)
+        echo "Unexpected behaviour"
+        ;;
+esac

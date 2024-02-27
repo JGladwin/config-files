@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+read -p "Enter file path:" FILE_PATH
+echo $FILE_PATH
+ls -la "$FILE_PATH"
